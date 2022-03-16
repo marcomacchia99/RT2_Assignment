@@ -2,11 +2,11 @@
 
 <launch>
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find RT1_Assignment3)/param/costmap_common_params.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find RT1_Assignment3)/param/costmap_common_params.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find RT1_Assignment3)/param/local_costmap_params.yaml" command="load"/>
-    <rosparam file="$(find RT1_Assignment3)/param/global_costmap_params.yaml" command="load"/>
-    <rosparam file="$(find RT1_Assignment3)/param/base_local_planner_params.yaml" command="load"/>
-    <rosparam file="$(find RT1_Assignment3)/param/move_base_params.yaml" command="load"/>
+    <rosparam file="$(find RT2_Assignment)/param/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find RT2_Assignment)/param/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find RT2_Assignment)/param/local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find RT2_Assignment)/param/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find RT2_Assignment)/param/base_local_planner_params.yaml" command="load"/>
+    <rosparam file="$(find RT2_Assignment)/param/move_base_params.yaml" command="load"/>
   </node>
 </launch>

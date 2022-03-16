@@ -10,22 +10,53 @@
 #define NC "\033[0m"
 #define BOLD "\033[1m"
 
-ros::Publisher publisher;
+/**
+* \file driveWithKeyboardAssisted.cpp
+* \brief Controller for the robot with collision avoidance feature
+* \author Marco Macchia
+* \version 1.0
+* \date 16/03/2022
+*
+* \details
+*
+* Subscribes to: <BR>
+*  /scan
+*
+*
+* Publishes to: <BR>
+*  /cmd_vel
+*
+*
+* Description : <BR>
+* This node let the user drive the robot using the keyboard. According to what the user want it sets
+* the linear and angular velocity of the robot. The node has a collision avoidance feature, meaning that
+* if the system detects that the robot is too close to a wall, it prevents it from hitting that wall.
+*
+**/
+
+
+ros::Publisher publisher; ///< publisher used to send the velocities to the robot
 
 //define variables for vel direction
-int lin=0; //linear direction
-int ang =0; //angular direction
+int lin=0; ///< linear robot direction
+int ang =0; ///< angular robot direction
 
 //variables for vel speed
-double speed = 0.5;
-double turn_speed = 1;
+double speed = 0.5; ///< robot linear speed
+double turn_speed = 1; ///< robot angular speed
 
-//variable for wall distance trashold
-double wall_th = 1;
+//variable for wall distance threshold
+double wall_th = 1; ///< wall distance threshold
 
 //define variable for Twist
-geometry_msgs::Twist vel;
+geometry_msgs::Twist vel; ///< velocity message 
 
+
+/** @brief 
+ * 
+ * This function sends the velocities to the robot
+ * 
+ */
 void publishVel()
 {
     //prepare new speed
@@ -36,7 +67,15 @@ void publishVel()
     publisher.publish(vel);
 }
 
-/**  Returns the minumim value of a given array  */
+/** @brief
+ *
+ * This function returns the minimum value found in a given array
+ *
+ * @param a the array from which the minimum value has to be extracted
+ * 
+ * @return double - the minumum value
+ *
+ */
 double min(double a[])
 {
     double min = 100;
@@ -102,8 +141,17 @@ void checkWalls(const sensor_msgs::LaserScan::ConstPtr &msg)
     publishVel();
 }
 
-// For non-blocking keyboard inputs, taken from teleop_twist_keyboard_cpp
-// at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp
+
+/**
+ * @brief sets the read operation in non-blocking mode.
+ * 
+ * This function is used for non-blocking keyboard inputs. 
+ * taken from teleop_twist_keyboard.cpp
+ * at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp 
+ * 
+ * @return int - the pressed key 
+ * 
+ */
 int getch(void)
 {
     int ch;
@@ -132,6 +180,13 @@ int getch(void)
     return ch;
 }
 
+/**
+ * @brief 
+ * This function translate the user input in robot command
+ * 
+ * @param inputChar the key pressed by the user
+ * 
+ */
 void interpretInput(char inputChar)
 {
 
@@ -222,6 +277,12 @@ void interpretInput(char inputChar)
     }
 }
 
+/**
+ * @brief 
+ * This function prints the instructions and waits for a command
+ * 
+ * 
+ */
 void getCommand()
 {
     char input_char;
@@ -256,12 +317,22 @@ press CTRL-C to quit
 
     interpretInput(input_char);
 
-    //publish new speed
-    // publishVel();
-
     system("clear");
 }
 
+
+/**
+ * @brief main function
+ * 
+ * The main function starts the current node, subscribes to the /scan topic and advertise that this node will publish into /cmd_vel topic.
+ * It starts an async spinner used to run all the functions in a multi-threaded way
+ * 
+ * @param argc
+ * @param argv
+ * 
+ * @return always 0
+ * 
+ */
 int main(int argc, char **argv)
 {
     system("clear");
@@ -271,7 +342,7 @@ int main(int argc, char **argv)
     //subribes to /scan topic
     ros::Subscriber subscriber = node_handle.subscribe("/scan", 500, checkWalls);
 
-    //this ndoe will publish updated into /cmd_vel topic
+    //this node will publish updated into /cmd_vel topic
     publisher = node_handle.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
 
     ros::AsyncSpinner spinner(4);

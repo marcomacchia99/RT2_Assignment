@@ -1,4 +1,4 @@
-Assignment 3 (final assignment) - Research Track 1 
+Assignment - Research Track 2
 ================================
 
 -----------------------
@@ -36,9 +36,9 @@ this is its structure:
 
 ```xml
 <launch>
-    <include file="$(find RT1_Assignment3)/launch/simulation_gmapping.launch"/>
-    <include file="$(find RT1_Assignment3)/launch/move_base.launch"/>
-    <node pkg="RT1_Assignment3" type="mainController" name="mainController" output="screen" required="true" launch-prefix="xterm -fa 'Monospace' -fs 11 -e"/>
+    <include file="$(find RT2_Assignment)/launch/simulation_gmapping.launch"/>
+    <include file="$(find RT2_Assignment)/launch/move_base.launch"/>
+    <node pkg="RT2_Assignment" type="mainController" name="mainController" output="screen" required="true" launch-prefix="xterm -fa 'Monospace' -fs 11 -e"/>
 </launch>
 ```
 
@@ -51,19 +51,19 @@ After launching the simulation using the provided commands two programs will ope
 
 Gazebo is an open-source 3D robot simulator. Here's the simulation view from Gazebo:
 
-![alt text](https://github.com/marcomacchia99/RT1_Assignment3/blob/noetic/assets/gazebo1.jpg)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/gazebo1.jpg)
 
 ROS generate the environment based on the file `house.world`, stored into the __world__ folder.
 
 Initially the robot knows only what he can see, here's the image showing his initial known map.
 
-![alt text](https://github.com/marcomacchia99/RT1_Assignment3/blob/noetic/assets/rviz1.png)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/rviz1.png)
 
 After some time the robot has explored and mapped all the surrounding walls using his laser scan.
 
 We can now see the full map into rviz, as shown below:
 
-![alt text](https://github.com/marcomacchia99/RT1_Assignment3/blob/noetic/assets/rviz2.png)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/rviz2.png)
 
 MainController node
 --------------
@@ -88,7 +88,7 @@ Finally, based on the input received, the mainController node runs the selected 
 For example, if the number 1 is pressed, this command is executed:
 
 ```c
-system("rosrun RT1_Assignment3 reachPoint");
+system("rosrun RT2_Assignment reachPoint");
 ```
 
 ReachPoint node

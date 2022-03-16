@@ -1,0 +1,198 @@
+\hypertarget{reach_point_8cpp}{}\doxysection{src/reach\+Point.cpp File Reference}
+\label{reach_point_8cpp}\index{src/reachPoint.cpp@{src/reachPoint.cpp}}
+
+
+Node that sets and manages a goal for the robot.  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}move\+\_\+base\+\_\+msgs/\+Move\+Base\+Action\+Goal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actionlib\+\_\+msgs/\+Goal\+Status\+Array.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actionlib\+\_\+msgs/\+Goal\+I\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for reach\+Point.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{reach_point_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_a30362161c93e3f1a4ee4c673f535b5a8}\label{reach_point_8cpp_a30362161c93e3f1a4ee4c673f535b5a8}} 
+\#define {\bfseries L\+E\+N\+G\+TH}~100
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_a8d23feea868a983c8c2b661e1e16972f}\label{reach_point_8cpp_a8d23feea868a983c8c2b661e1e16972f}} 
+\#define {\bfseries R\+ED}~\char`\"{}\textbackslash{}033\mbox{[}1;31m\char`\"{}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_acfbc006ea433ad708fdee3e82996e721}\label{reach_point_8cpp_acfbc006ea433ad708fdee3e82996e721}} 
+\#define {\bfseries G\+R\+E\+EN}~\char`\"{}\textbackslash{}033\mbox{[}1;32m\char`\"{}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}\label{reach_point_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}} 
+\#define {\bfseries B\+L\+UE}~\char`\"{}\textbackslash{}033\mbox{[}1;34m\char`\"{}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_a1fa2460e32327ade49189c95740bc1b5}\label{reach_point_8cpp_a1fa2460e32327ade49189c95740bc1b5}} 
+\#define {\bfseries NC}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_a26cdbb1a00213c810caccf21cd33a631}\label{reach_point_8cpp_a26cdbb1a00213c810caccf21cd33a631}} 
+\#define {\bfseries B\+O\+LD}~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{reach_point_8cpp_a43aed5c0db4dc54417dd3aa47340dad0}{get\+Coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Get the new goal coordinate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{reach_point_8cpp_a688113aa068dfdd98d7c354788c4a2b2}{feedback\+Handler}} (const actionlib\+\_\+msgs\+::\+Goal\+Status\+Array\+::\+Const\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Get the goal status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{reach_point_8cpp_a9b6ff9367fc193effc9749ae2c013d72}{detect\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Detect and validate a user input. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reach_point_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}{getch}} (void)
+\begin{DoxyCompactList}\small\item\em sets the read operation in non-\/blocking mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{reach_point_8cpp_ab6513ae841eaed160953c8862f97484f}{cancel\+Goal}} (int must\+\_\+continue)
+\begin{DoxyCompactList}\small\item\em Cancel the current goal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reach_point_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main function \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{reach_point_8cpp_ae057aae7fbba2a4cef62321020305295}\label{reach_point_8cpp_ae057aae7fbba2a4cef62321020305295}} 
+ros\+::\+Publisher \mbox{\hyperlink{reach_point_8cpp_ae057aae7fbba2a4cef62321020305295}{pub\+\_\+goal}}
+\begin{DoxyCompactList}\small\item\em publisher used to send the goal to the goal service \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_a33cbe548b1e0f6b08bbe754f53af458c}\label{reach_point_8cpp_a33cbe548b1e0f6b08bbe754f53af458c}} 
+ros\+::\+Publisher \mbox{\hyperlink{reach_point_8cpp_a33cbe548b1e0f6b08bbe754f53af458c}{pub\+\_\+cancel}}
+\begin{DoxyCompactList}\small\item\em publisher used to cancel the current goal sending a message to the goal service \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_a22ff3f8747e9f68ad42bddad8e86e872}\label{reach_point_8cpp_a22ff3f8747e9f68ad42bddad8e86e872}} 
+ros\+::\+Subscriber \mbox{\hyperlink{reach_point_8cpp_a22ff3f8747e9f68ad42bddad8e86e872}{subscriber}}
+\begin{DoxyCompactList}\small\item\em subscriber used to receive the current goal status \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_ad0da36b2558901e21e7a30f6c227a45e}\label{reach_point_8cpp_ad0da36b2558901e21e7a30f6c227a45e}} 
+float \mbox{\hyperlink{reach_point_8cpp_ad0da36b2558901e21e7a30f6c227a45e}{x}}
+\begin{DoxyCompactList}\small\item\em goal x coordinate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_aa4f0d3eebc3c443f9be81bf48561a217}\label{reach_point_8cpp_aa4f0d3eebc3c443f9be81bf48561a217}} 
+float \mbox{\hyperlink{reach_point_8cpp_aa4f0d3eebc3c443f9be81bf48561a217}{y}}
+\begin{DoxyCompactList}\small\item\em goal y coordinate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_a7441ef0865bcb3db9b8064dd7375c1ea}\label{reach_point_8cpp_a7441ef0865bcb3db9b8064dd7375c1ea}} 
+int \mbox{\hyperlink{reach_point_8cpp_a7441ef0865bcb3db9b8064dd7375c1ea}{id}}
+\begin{DoxyCompactList}\small\item\em current goal id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_a3708557a17a7b72980b1fed0cc172537}\label{reach_point_8cpp_a3708557a17a7b72980b1fed0cc172537}} 
+int \mbox{\hyperlink{reach_point_8cpp_a3708557a17a7b72980b1fed0cc172537}{flag\+\_\+goal\+\_\+in\+\_\+progress}}
+\begin{DoxyCompactList}\small\item\em flag used to detect the user input during goal navigation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{reach_point_8cpp_a277a26d89f87198b128da14ee46d39a7}\label{reach_point_8cpp_a277a26d89f87198b128da14ee46d39a7}} 
+move\+\_\+base\+\_\+msgs\+::\+Move\+Base\+Action\+Goal \mbox{\hyperlink{reach_point_8cpp_a277a26d89f87198b128da14ee46d39a7}{goal}}
+\begin{DoxyCompactList}\small\item\em goal message \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Node that sets and manages a goal for the robot. 
+
+\begin{DoxyAuthor}{Author}
+Marco Macchia 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/03/2022
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ /move\+\_\+base/status
+
+Publishes to\+: ~\newline
+ /move\+\_\+base/goal /move\+\_\+base/cancel
+
+Description \+: ~\newline
+ This node let the user set a goal for the robot. A goal is a position that the robot should autonomousely reach. While the robot is navigating towards the final position, the user can at any time cancel the goal. The system automatically detects if the robot has reached the goal. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{reach_point_8cpp_ab6513ae841eaed160953c8862f97484f}\label{reach_point_8cpp_ab6513ae841eaed160953c8862f97484f}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!cancelGoal@{cancelGoal}}
+\index{cancelGoal@{cancelGoal}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{cancelGoal()}{cancelGoal()}}
+{\footnotesize\ttfamily void cancel\+Goal (\begin{DoxyParamCaption}\item[{int}]{must\+\_\+continue }\end{DoxyParamCaption})}
+
+
+
+Cancel the current goal. 
+
+This function cancel the current goal and check if the user wants to set another goal or exit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em must\+\_\+continue} & if set to 0, the program exit without asking to continue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{reach_point_8cpp_a9b6ff9367fc193effc9749ae2c013d72}\label{reach_point_8cpp_a9b6ff9367fc193effc9749ae2c013d72}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!detectInput@{detectInput}}
+\index{detectInput@{detectInput}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{detectInput()}{detectInput()}}
+{\footnotesize\ttfamily void detect\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Detect and validate a user input. 
+
+This function check if the user is typing something. Depending on the status of the goal, only some inputs can be accepted. \mbox{\Hypertarget{reach_point_8cpp_a688113aa068dfdd98d7c354788c4a2b2}\label{reach_point_8cpp_a688113aa068dfdd98d7c354788c4a2b2}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!feedbackHandler@{feedbackHandler}}
+\index{feedbackHandler@{feedbackHandler}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{feedbackHandler()}{feedbackHandler()}}
+{\footnotesize\ttfamily void feedback\+Handler (\begin{DoxyParamCaption}\item[{const actionlib\+\_\+msgs\+::\+Goal\+Status\+Array\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Get the goal status. 
+
+This function check the current goal status. If the robot has reached the goal or the robot can\textquotesingle{}t reach it, the functions asks for a new goal. If the robot is still trying to reach the goal it does nothing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & the message received from the /move\+\_\+base/status topic, containing the current goal status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{reach_point_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}\label{reach_point_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!getch@{getch}}
+\index{getch@{getch}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{getch()}{getch()}}
+{\footnotesize\ttfamily int getch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+sets the read operation in non-\/blocking mode. 
+
+This function is used for non-\/blocking keyboard inputs. taken from teleop\+\_\+twist\+\_\+keyboard.\+cpp at \href{https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp}{\texttt{ https\+://github.\+com/methyl\+Dragon/teleop\+\_\+twist\+\_\+keyboard\+\_\+cpp/blob/master/src/teleop\+\_\+twist\+\_\+keyboard.\+cpp}}
+
+\begin{DoxyReturn}{Returns}
+int -\/ the pressed key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reach_point_8cpp_a43aed5c0db4dc54417dd3aa47340dad0}\label{reach_point_8cpp_a43aed5c0db4dc54417dd3aa47340dad0}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!getCoordinates@{getCoordinates}}
+\index{getCoordinates@{getCoordinates}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{getCoordinates()}{getCoordinates()}}
+{\footnotesize\ttfamily void get\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the new goal coordinate. 
+
+This function gets the goal coordinates, create a new goal setting a custom id and publish the new goal. It also subscribes the node to the /move\+\_\+base/status topic \mbox{\Hypertarget{reach_point_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{reach_point_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{reachPoint.cpp@{reachPoint.cpp}!main@{main}}
+\index{main@{main}!reachPoint.cpp@{reachPoint.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+main function 
+
+The main function starts the current node and advertise that this node will publish into /cmd\+\_\+vel and /move\+\_\+base/cancel topics. It then call the \mbox{\hyperlink{reach_point_8cpp_a43aed5c0db4dc54417dd3aa47340dad0}{get\+Coordinates()}} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+always 0 
+\end{DoxyReturn}

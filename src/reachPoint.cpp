@@ -13,30 +13,61 @@
 #define NC "\033[0m"
 #define BOLD "\033[1m"
 
-ros::Publisher pub_goal;
-ros::Publisher pub_cancel;
+/**
+* \file reachPoint.cpp
+* \brief Node that sets and manages a goal for the robot
+* \author Marco Macchia
+* \version 1.0
+* \date 16/03/2022
+*
+* \details
+*
+* Subscribes to: <BR>
+*  /move_base/status
+*
+*
+* Publishes to: <BR>
+*  /move_base/goal
+*  /move_base/cancel
+*
+*
+* Description : <BR>
+* This node let the user set a goal for the robot. A goal is a position that the robot should autonomousely reach.
+* While the robot is navigating towards the final position, the user can at any time cancel the goal.
+* The system automatically detects if the robot has reached the goal.
+*
+**/
 
-ros::Subscriber subscriber;
+ros::Publisher pub_goal; ///< publisher used to send the goal to the goal service
+ros::Publisher pub_cancel; ///< publisher used to cancel the current goal sending a message to the goal service
 
-//variables for goal coordinates
-float x, y;
+ros::Subscriber subscriber; ///< subscriber used to receive the current goal status
 
-//variable for goal id
-int id;
+float x; ///< goal x coordinate
+float y; ///< goal y coordinate
+ 
 
-//flag used to detect the user input during goal navigation
-int flag_goal_in_progress;
+int id; ///< current goal id
 
-//variable for goal
-move_base_msgs::MoveBaseActionGoal goal;
+int flag_goal_in_progress; ///< flag used to detect the user input during goal navigation
+
+move_base_msgs::MoveBaseActionGoal goal; ///< goal message
 
 //function prototypes
 void getCoordinates();
 void feedbackHandler(const actionlib_msgs::GoalStatusArray::ConstPtr &msg);
 void detectInput();
 
-// For non-blocking keyboard inputs, taken from teleop_twist_keyboard.cpp
-// at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp
+/**
+ * @brief sets the read operation in non-blocking mode.
+ * 
+ * This function is used for non-blocking keyboard inputs. 
+ * taken from teleop_twist_keyboard.cpp
+ * at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp 
+ * 
+ * @return int - the pressed key 
+ * 
+ */
 int getch(void)
 {
     int ch;
@@ -65,6 +96,14 @@ int getch(void)
     return ch;
 }
 
+
+/** @brief Cancel the current goal.
+ *
+ * This function cancel the current goal and check if the user wants to set another goal or exit.
+ *
+ * @param must_continue if set to 0, the program exit without asking to continue
+ *
+ */
 void cancelGoal(int must_continue)
 {
     //build cancel message with goal id
@@ -96,6 +135,13 @@ void cancelGoal(int must_continue)
         detectInput();
 }
 
+
+/** @brief Detect and validate a user input.
+ *
+ * This function check if the user is typing something. Depending on the status of the goal, only some inputs can be accepted.
+ *
+ *
+ */
 void detectInput()
 {
     //catch an user input
@@ -123,6 +169,14 @@ void detectInput()
     }
 }
 
+
+/** @brief Get the new goal coordinate.
+ *
+ * This function gets the goal coordinates, create a new goal setting a custom id and publish the new goal.
+ * It also subscribes the node to the /move_base/status topic
+ *
+ *
+ */
 void getCoordinates()
 {
     system("clear");
@@ -197,6 +251,15 @@ void getCoordinates()
     spinner.stop();
 }
 
+
+/** @brief Get the goal status.
+ *
+ * This function check the current goal status. If the robot has reached the goal or the robot can't reach it, the functions asks for a new goal.
+ * If the robot is still trying to reach the goal it does nothing.
+ *
+ * @param msg the message received from the /move_base/status topic, containing the current goal status
+ *
+ */
 void feedbackHandler(const actionlib_msgs::GoalStatusArray::ConstPtr &msg)
 {
     //status of goal
@@ -236,6 +299,18 @@ void feedbackHandler(const actionlib_msgs::GoalStatusArray::ConstPtr &msg)
     std::cout << "\nWould you like to set another goal? (y/n)\n";
 }
 
+/**
+ * @brief main function
+ * 
+ * The main function starts the current node and advertise that this node will publish into /cmd_vel and /move_base/cancel topics.
+ * It then call the getCoordinates() function.
+ * 
+ * @param argc
+ * @param argv
+ * 
+ * @return always 0
+ * 
+ */
 int main(int argc, char **argv)
 {
     //used to randomize id

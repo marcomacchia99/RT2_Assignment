@@ -1,5 +1,5 @@
 <launch>
-    <include file="$(find RT1_Assignment3)/launch/simulation_gmapping.launch"/>
-    <include file="$(find RT1_Assignment3)/launch/move_base.launch"/>
-    <node pkg="RT1_Assignment3" type="mainController" name="mainController" output="screen" required="true" launch-prefix="xterm -fa 'Monospace' -fs 11 -e"/>
+    <include file="$(find RT2_Assignment)/launch/simulation_gmapping.launch"/>
+    <include file="$(find RT2_Assignment)/launch/move_base.launch"/>
+    <node pkg="RT2_Assignment" type="mainController" name="mainController" output="screen" required="true" launch-prefix="xterm -fa 'Monospace' -fs 11 -e"/>
 </launch>

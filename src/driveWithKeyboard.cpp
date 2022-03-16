@@ -7,21 +7,49 @@
 #define NC "\033[0m"
 #define BOLD "\033[1m"
 
-ros::Publisher publisher;
+/**
+* \file driveWithKeyboard.cpp
+* \brief Controller for the robot
+* \author Marco Macchia
+* \version 1.0
+* \date 16/03/2022
+*
+* \details
+*
+*
+* Publishes to: <BR>
+*  /cmd_vel
+*
+*
+* Description : <BR>
+* This node let the user drive the robot using the keyboard. According to what the user want it sets
+* the linear and angular velocity of the robot.
+*
+**/
+
+ros::Publisher publisher; ///< publisher used to send the velocities to the robot
 
 //define variables for vel direction
-int lin=0; //linear direction
-int ang =0; //angular direction
+int lin=0; ///< linear robot direction
+int ang =0; ///< angular robot direction
 
 //define variables for vel speed
-double speed = 0.5;
-double turn_speed = 1;
+double speed = 0.5; ///< robot linear speed
+double turn_speed = 1; ///< robot angular speed
 
 //define variable for Twist
-geometry_msgs::Twist vel;
+geometry_msgs::Twist vel; ///< velocity message
 
-// For non-blocking keyboard inputs, taken from teleop_twist_keyboard.cpp
-// at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp
+/**
+ * @brief sets the read operation in non-blocking mode.
+ * 
+ * This function is used for non-blocking keyboard inputs. 
+ * taken from teleop_twist_keyboard.cpp
+ * at https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp 
+ * 
+ * @return int - the pressed key 
+ * 
+ */
 int getch(void)
 {
     int ch;
@@ -50,6 +78,13 @@ int getch(void)
     return ch;
 }
 
+/**
+ * @brief 
+ * This function translate the user input in robot command
+ * 
+ * @param inputChar the key pressed by the user
+ * 
+ */
 void interpretInput(char inputChar)
 {
     //set linear and angular direction according to user input
@@ -139,6 +174,13 @@ void interpretInput(char inputChar)
     }
 }
 
+
+/**
+ * @brief 
+ * This function prints the instructions, waits for a command and then sends the new velocities to the robot 
+ * 
+ * 
+ */
 void getCommand()
 {
     char input_char;
@@ -183,6 +225,18 @@ press CTRL-C to quit
     system("clear");
 }
 
+/**
+ * @brief main function
+ * 
+ * The main function starts the current node and advertise that this node will publish into /cmd_vel topic.
+ * It continuosely checks the user inputs
+ * 
+ * @param argc
+ * @param argv
+ * 
+ * @return always 0
+ * 
+ */
 int main(int argc, char **argv)
 {
     system("clear");

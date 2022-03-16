@@ -1,0 +1,208 @@
+\hypertarget{drive_with_keyboard_assisted_8cpp}{}\doxysection{src/drive\+With\+Keyboard\+Assisted.cpp File Reference}
+\label{drive_with_keyboard_assisted_8cpp}\index{src/driveWithKeyboardAssisted.cpp@{src/driveWithKeyboardAssisted.cpp}}
+
+
+Controller for the robot with collision avoidance feature.  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/\+Twist.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/\+Laser\+Scan.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+Include dependency graph for drive\+With\+Keyboard\+Assisted.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{drive_with_keyboard_assisted_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a30362161c93e3f1a4ee4c673f535b5a8}\label{drive_with_keyboard_assisted_8cpp_a30362161c93e3f1a4ee4c673f535b5a8}} 
+\#define {\bfseries L\+E\+N\+G\+TH}~140
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a8d23feea868a983c8c2b661e1e16972f}\label{drive_with_keyboard_assisted_8cpp_a8d23feea868a983c8c2b661e1e16972f}} 
+\#define {\bfseries R\+ED}~\char`\"{}\textbackslash{}033\mbox{[}1;31m\char`\"{}
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}\label{drive_with_keyboard_assisted_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}} 
+\#define {\bfseries B\+L\+UE}~\char`\"{}\textbackslash{}033\mbox{[}1;34m\char`\"{}
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a1fa2460e32327ade49189c95740bc1b5}\label{drive_with_keyboard_assisted_8cpp_a1fa2460e32327ade49189c95740bc1b5}} 
+\#define {\bfseries NC}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a26cdbb1a00213c810caccf21cd33a631}\label{drive_with_keyboard_assisted_8cpp_a26cdbb1a00213c810caccf21cd33a631}} 
+\#define {\bfseries B\+O\+LD}~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_ae3ca4d1aeb63319c0c04406d0e22f30e}{publish\+Vel}} ()
+\begin{DoxyCompactList}\small\item\em This function sends the velocities to the robot. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_aaabf3307db5fdcc10ac751d889c101c2}{min}} (double a\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function returns the minimum value found in a given array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_a39ce573903b4bb879b4afe1c19fe01d8}{check\+Walls}} (const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Check all the visible walls. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}{getch}} (void)
+\begin{DoxyCompactList}\small\item\em sets the read operation in non-\/blocking mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_a87fbc45fde5dafd3d35bdc9ac8d48426}{interpret\+Input}} (char input\+Char)
+\begin{DoxyCompactList}\small\item\em This function translate the user input in robot command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_ae87a2c68b111c8c8dca10732f2cc264e}{get\+Command}} ()
+\begin{DoxyCompactList}\small\item\em This function prints the instructions and waits for a command. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main function \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}\label{drive_with_keyboard_assisted_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}} 
+ros\+::\+Publisher \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}{publisher}}
+\begin{DoxyCompactList}\small\item\em publisher used to send the velocities to the robot \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_aed6efd15a611832e8335a27a1c93795a}\label{drive_with_keyboard_assisted_8cpp_aed6efd15a611832e8335a27a1c93795a}} 
+int \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_aed6efd15a611832e8335a27a1c93795a}{lin}} =0
+\begin{DoxyCompactList}\small\item\em linear robot direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a4365545fd48c51e8d4fa9ebb99c6a72f}\label{drive_with_keyboard_assisted_8cpp_a4365545fd48c51e8d4fa9ebb99c6a72f}} 
+int \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_a4365545fd48c51e8d4fa9ebb99c6a72f}{ang}} =0
+\begin{DoxyCompactList}\small\item\em angular robot direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a6dc6e6f3c75c509ce943163afb5dade7}\label{drive_with_keyboard_assisted_8cpp_a6dc6e6f3c75c509ce943163afb5dade7}} 
+double \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_a6dc6e6f3c75c509ce943163afb5dade7}{speed}} = 0.\+5
+\begin{DoxyCompactList}\small\item\em robot linear speed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_ae9b28d6b588b124dc762dc9a3c29619e}\label{drive_with_keyboard_assisted_8cpp_ae9b28d6b588b124dc762dc9a3c29619e}} 
+double \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_ae9b28d6b588b124dc762dc9a3c29619e}{turn\+\_\+speed}} = 1
+\begin{DoxyCompactList}\small\item\em robot angular speed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_ad3d682690ea8f4bbf19f8d3edbc31301}\label{drive_with_keyboard_assisted_8cpp_ad3d682690ea8f4bbf19f8d3edbc31301}} 
+double \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_ad3d682690ea8f4bbf19f8d3edbc31301}{wall\+\_\+th}} = 1
+\begin{DoxyCompactList}\small\item\em wall distance threshold \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_af113e9b4ca3af68972dfd3df47898c83}\label{drive_with_keyboard_assisted_8cpp_af113e9b4ca3af68972dfd3df47898c83}} 
+geometry\+\_\+msgs\+::\+Twist \mbox{\hyperlink{drive_with_keyboard_assisted_8cpp_af113e9b4ca3af68972dfd3df47898c83}{vel}}
+\begin{DoxyCompactList}\small\item\em velocity message \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller for the robot with collision avoidance feature. 
+
+\begin{DoxyAuthor}{Author}
+Marco Macchia 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/03/2022
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ /scan
+
+Publishes to\+: ~\newline
+ /cmd\+\_\+vel
+
+Description \+: ~\newline
+ This node let the user drive the robot using the keyboard. According to what the user want it sets the linear and angular velocity of the robot. The node has a collision avoidance feature, meaning that if the system detects that the robot is too close to a wall, it prevents it from hitting that wall. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a39ce573903b4bb879b4afe1c19fe01d8}\label{drive_with_keyboard_assisted_8cpp_a39ce573903b4bb879b4afe1c19fe01d8}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!checkWalls@{checkWalls}}
+\index{checkWalls@{checkWalls}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{checkWalls()}{checkWalls()}}
+{\footnotesize\ttfamily void check\+Walls (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Check all the visible walls. 
+
+This function checks all the walls that the robot can see. It uses the robot scanner, and it checks all the blocks that are in front of the robot, at his left and at his right. If the robot is close to a wall, it makes him stop, otherwise it let him go.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message published into /scan topic \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}\label{drive_with_keyboard_assisted_8cpp_af5978fab9fa6dd4ced1c3a8ab1251f7b}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!getch@{getch}}
+\index{getch@{getch}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{getch()}{getch()}}
+{\footnotesize\ttfamily int getch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+sets the read operation in non-\/blocking mode. 
+
+This function is used for non-\/blocking keyboard inputs. taken from teleop\+\_\+twist\+\_\+keyboard.\+cpp at \href{https://github.com/methylDragon/teleop_twist_keyboard_cpp/blob/master/src/teleop_twist_keyboard.cpp}{\texttt{ https\+://github.\+com/methyl\+Dragon/teleop\+\_\+twist\+\_\+keyboard\+\_\+cpp/blob/master/src/teleop\+\_\+twist\+\_\+keyboard.\+cpp}}
+
+\begin{DoxyReturn}{Returns}
+int -\/ the pressed key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_ae87a2c68b111c8c8dca10732f2cc264e}\label{drive_with_keyboard_assisted_8cpp_ae87a2c68b111c8c8dca10732f2cc264e}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!getCommand@{getCommand}}
+\index{getCommand@{getCommand}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{getCommand()}{getCommand()}}
+{\footnotesize\ttfamily void get\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function prints the instructions and waits for a command. 
+
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a87fbc45fde5dafd3d35bdc9ac8d48426}\label{drive_with_keyboard_assisted_8cpp_a87fbc45fde5dafd3d35bdc9ac8d48426}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!interpretInput@{interpretInput}}
+\index{interpretInput@{interpretInput}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{interpretInput()}{interpretInput()}}
+{\footnotesize\ttfamily void interpret\+Input (\begin{DoxyParamCaption}\item[{char}]{input\+Char }\end{DoxyParamCaption})}
+
+
+
+This function translate the user input in robot command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Char} & the key pressed by the user \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{drive_with_keyboard_assisted_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!main@{main}}
+\index{main@{main}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+main function 
+
+The main function starts the current node, subscribes to the /scan topic and advertise that this node will publish into /cmd\+\_\+vel topic. It starts an async spinner used to run all the functions in a multi-\/threaded way
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+always 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_aaabf3307db5fdcc10ac751d889c101c2}\label{drive_with_keyboard_assisted_8cpp_aaabf3307db5fdcc10ac751d889c101c2}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!min@{min}}
+\index{min@{min}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily double min (\begin{DoxyParamCaption}\item[{double}]{a\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function returns the minimum value found in a given array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the array from which the minimum value has to be extracted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double -\/ the minumum value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{drive_with_keyboard_assisted_8cpp_ae3ca4d1aeb63319c0c04406d0e22f30e}\label{drive_with_keyboard_assisted_8cpp_ae3ca4d1aeb63319c0c04406d0e22f30e}} 
+\index{driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}!publishVel@{publishVel}}
+\index{publishVel@{publishVel}!driveWithKeyboardAssisted.cpp@{driveWithKeyboardAssisted.cpp}}
+\doxysubsubsection{\texorpdfstring{publishVel()}{publishVel()}}
+{\footnotesize\ttfamily void publish\+Vel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function sends the velocities to the robot. 
+
