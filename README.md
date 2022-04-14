@@ -5,7 +5,7 @@ Documentation
 ------------
 The project documentation, generated with Doxygen can be found in the following link:
 
-marcomacchia99.github.io/RT2_Assignment/index.html
+[__marcomacchia99.github.io/RT2_Assignment/index.html__](marcomacchia99.github.io/RT2_Assignment/index.html)
 
 -----------------------
 
