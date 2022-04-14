@@ -1,6 +1,12 @@
 Assignment - Research Track 2
 ================================
 
+Documentation
+------------
+The project documentation, generated with Doxygen can be found in the following link:
+
+file:///home/marco/Scrivania/RT1/ROS/src/RT2_Assignment/docs/html/index.html
+
 -----------------------
 
 Introduction
