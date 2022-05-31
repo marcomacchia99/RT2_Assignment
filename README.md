@@ -7,6 +7,10 @@ The project documentation, generated with Doxygen can be found in the following 
 
 [__marcomacchia99.github.io/RT2_Assignment/index.html__](https://marcomacchia99.github.io/RT2_Assignment/index.html)
 
+Jupyter notebook
+------------
+The jupyter notebook can be found in the following file: [__Assignment.ipynb__](https://github.com/marcomacchia99/RT2_Assignment/blob/master/Assignment.ipynb)
+
 Data Analysis
 ------------
 The results of the data analysis, computed with Matlab, can be found in the [__PDF Report__](https://github.com/marcomacchia99/RT2_Assignment/blob/master/RT2_Data_Analysis.pdf)
