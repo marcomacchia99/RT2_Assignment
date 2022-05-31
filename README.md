@@ -1,13 +1,17 @@
 Assignment - Research Track 2
 ================================
 
-Documentation
+Code Documentation
 ------------
 The project documentation, generated with Doxygen can be found in the following link:
 
 [__marcomacchia99.github.io/RT2_Assignment/index.html__](https://marcomacchia99.github.io/RT2_Assignment/index.html)
 
 -----------------------
+
+Data Analysis
+------------
+The results of the data analysis, computed with Matlab, can be found in the [__PDF Report__](https://github.com/marcomacchia99/RT2_Assignment/blob/master/RT2_Data_Analysis.pdf)
 
 Introduction
 ------------
@@ -57,19 +61,19 @@ After launching the simulation using the provided commands two programs will ope
 
 Gazebo is an open-source 3D robot simulator. Here's the simulation view from Gazebo:
 
-![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/gazebo1.jpg)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/master/assets/gazebo1.jpg)
 
 ROS generate the environment based on the file `house.world`, stored into the __world__ folder.
 
 Initially the robot knows only what he can see, here's the image showing his initial known map.
 
-![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/rviz1.png)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/master/assets/rviz1.png)
 
 After some time the robot has explored and mapped all the surrounding walls using his laser scan.
 
 We can now see the full map into rviz, as shown below:
 
-![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/noetic/assets/rviz2.png)
+![alt text](https://github.com/marcomacchia99/RT2_Assignment/blob/master/assets/rviz2.png)
 
 MainController node
 --------------
@@ -190,7 +194,7 @@ Finally, a __red danger warning string__ is prompted to the user.
 Flowchart
 --------
 
-<image src="https://github.com/marcomacchia99/RT1_Assignment2/blob/main/assets/diagram.png" width="600px">
+<image src="https://github.com/marcomacchia99/RT2_Assignment/blob/master/assets/diagram.png" width="600px">
 
     
 Project graph
